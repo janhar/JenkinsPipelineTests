@@ -29,5 +29,13 @@ pipeline {
                 echo "${COOL}"
             }
         }
+        stage("C") {
+            agent {
+                label 'master'
+            }
+            steps {
+                sh 'printenv'
+            }
+        }
     }
 }
