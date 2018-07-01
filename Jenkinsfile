@@ -9,7 +9,11 @@ pipeline {
             }
             steps {
                 echo 'A'
-                
+                sh './script.sh'
+		sh '''
+		  echo 'First line'
+		  echo 'Second line'
+                '''
                 script {
                     COOL = 'really cool! A'
                 }
