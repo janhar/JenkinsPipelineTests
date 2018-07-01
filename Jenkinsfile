@@ -8,7 +8,7 @@ pipeline {
                 label 'master'
             }
             steps {
-                echo 'A'
+                echo 'A (another branch)'
                 
                 script {
                     COOL = 'really cool! A'
