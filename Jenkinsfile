@@ -24,12 +24,16 @@ pipeline {
                 label 'master'
             }
             steps {
+                input 'del'
                 echo 'B'
+                cleanWs()
                 script {
                     if(COOL == null) {
                         COOL = 'super cool B'
                     }
                 }
+                input 'check'
+
                 echo "${COOL}"
             }
         }
