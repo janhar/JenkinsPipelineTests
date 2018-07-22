@@ -32,7 +32,6 @@ pipeline {
                         COOL = 'super cool B'
                     }
                 }
-                input 'check'
 
                 echo "${COOL}"
             }
