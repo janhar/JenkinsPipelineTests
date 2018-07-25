@@ -9,7 +9,7 @@ pipeline {
                 label 'master'
             }
             when {
-                environment name: 'DEBUG_BUILD', value: true
+                environment name: 'DEBUG_BUILD', value: "true"
             }
             steps {
                 echo 'A'
