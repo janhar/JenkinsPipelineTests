@@ -2,10 +2,14 @@ def COOL
 
 pipeline {
     agent none
+    parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
     stages {
         stage("A") {
             agent {
                 label 'master'
+            }
+            when {
+                environment name: 'DEBUG_BUILD', value: true
             }
             steps {
                 echo 'A'
