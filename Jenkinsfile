@@ -28,7 +28,7 @@ pipeline {
                 label 'master'
             }
             steps {
-                input 'del'
+                //input 'del'
                 echo 'B'
                 cleanWs()
                 script {
