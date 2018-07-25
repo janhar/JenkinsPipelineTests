@@ -2,15 +2,15 @@ def COOL
 
 pipeline {
     agent none
-    parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
+    //parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
     stages {
         stage("A") {
             agent {
                 label 'master'
             }
-            when {
+            /*when {
                 environment name: 'DEBUG_BUILD', value: "true"
-            }
+            }*/
             steps {
                 echo 'A'
                 sh './script.sh'
@@ -44,7 +44,7 @@ pipeline {
             parallel {
                 stage('Test On Windows') {
                     agent {
-                        label "windows"
+                        label "master"
                     }
                     steps {
                         echo "run-tests.bat"
@@ -57,7 +57,7 @@ pipeline {
                 }
                 stage('Test On Linux') {
                     agent {
-                        label "linux"
+                        label "master"
                     }
                     steps {
                         echo "run-tests.sh"
