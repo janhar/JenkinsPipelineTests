@@ -49,11 +49,6 @@ pipeline {
                     steps {
                         echo "run-tests.bat"
                     }
-                    /*post {
-                        always {
-                            junit "**/TEST-*.xml"
-                        }
-                    }*/
                 }
                 stage('Test On Linux') {
                     agent {
@@ -62,11 +57,6 @@ pipeline {
                     steps {
                         echo "run-tests.sh"
                     }
-                    /*post {
-                        always {
-                            junit "**/TEST-*.xml"
-                        }
-                    }*/
                 }
             }
         }
