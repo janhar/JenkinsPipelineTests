@@ -40,6 +40,36 @@ pipeline {
                 echo "${COOL}"
             }
         }
+        stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        echo "run-tests.bat"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        echo "run-tests.sh"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+            }
+        }
         stage("C") {
             agent {
                 label 'master'
