@@ -2,17 +2,20 @@ def COOL
 
 pipeline {
     agent none
+    options {
+        skipDefaultCheckout true
+      }
     //parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
     stages {
+        agent {
+            label 'mac'
+        }
         stage("A") {
-            agent {
-                label 'master'
-            }
             /*when {
                 environment name: 'DEBUG_BUILD', value: "true"
             }*/
             steps {
-                echo 'A'
+                showDirectory()
                 sh './script.sh'
 		sh '''
 		  echo 'First line'
@@ -25,12 +28,12 @@ pipeline {
         }
         stage("B") {
             agent {
-                label 'master'
+                label 'mac'
+                customWorkspace 'lol'
             }
             steps {
-                //input 'del'
-                echo 'B'
-                cleanWs()
+                showDirectory()
+                //cleanWs()
                 script {
                     if(COOL == null) {
                         COOL = 'super cool B'
@@ -42,31 +45,35 @@ pipeline {
         }
         stage('Run Tests') {
             parallel {
+                agent {
+                    label 'mac'
+                }
                 stage('Test On Windows') {
-                    agent {
-                        label "master"
-                    }
                     steps {
-                        echo "run-tests.bat"
+                        showDirectory()
                     }
                 }
+                agent {
+                    label 'mac'
+                }
                 stage('Test On Linux') {
-                    agent {
-                        label "master"
-                    }
                     steps {
-                        echo "run-tests.sh"
+                        showDirectory()
                     }
                 }
             }
         }
         stage("C") {
             agent {
-                label 'master'
+                label 'mac'
             }
             steps {
-                sh 'printenv'
+                showDirectory()
             }
         }
     }
+}
+
+void showDirectory() {
+    sh 'pwd'
 }
