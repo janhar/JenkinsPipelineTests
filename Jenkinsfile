@@ -54,6 +54,7 @@ pipeline {
                     steps {
                         showDirectory()
                         sh 'touch 1.txt'
+                        stash 'touch1'
                     }
                 }
                 stage('Test On Linux') {
@@ -66,6 +67,7 @@ pipeline {
                     steps {
                         showDirectory()
                         sh 'touch 2.txt'
+                        stash 'touch2'
                     }
                 }
             }
@@ -76,6 +78,8 @@ pipeline {
             }
             steps {
                 showDirectory()
+                unstash 'touch1'
+                unstash 'touch2'
             }
         }
     }
