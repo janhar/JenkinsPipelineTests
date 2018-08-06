@@ -62,7 +62,7 @@ pipeline {
                                 echo err
                             }
                         }
-                        currentBuild.result
+                        echo currentBuild.result
                     }
                 }
                 stage('Test On Linux') {
