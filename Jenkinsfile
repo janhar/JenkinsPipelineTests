@@ -7,10 +7,10 @@ pipeline {
       }
     //parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
     stages {
-        agent {
-            label 'mac'
-        }
         stage("A") {
+            agent {
+                label 'mac'
+            }
             /*when {
                 environment name: 'DEBUG_BUILD', value: "true"
             }*/
@@ -45,18 +45,19 @@ pipeline {
         }
         stage('Run Tests') {
             parallel {
-                agent {
-                    label 'mac'
-                }
                 stage('Test On Windows') {
+                    agent {
+                        label 'mac'
+                    }
                     steps {
                         showDirectory()
                     }
                 }
-                agent {
+                
+                stage('Test On Linux') {
+                    agent {
                     label 'mac'
                 }
-                stage('Test On Linux') {
                     steps {
                         showDirectory()
                     }
