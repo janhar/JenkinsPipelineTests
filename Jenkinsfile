@@ -58,9 +58,9 @@ pipeline {
                         stash 'touch1'
                         script {
                             try {
-                                sh 'exit -1'
+                                sh '...'
                             } catch (err) {
-                                echo err
+                                echo 'some error'
                             }
                         }
                         echo "windows: ${currentBuild.currentResult}"
