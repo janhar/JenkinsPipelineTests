@@ -57,7 +57,7 @@ pipeline {
                         stash 'touch1'
                         script {
                             try {
-                                sh 'exit -1'
+                                sh 'asdf'
                             }catch (err) {
                                 echo err
                             }
