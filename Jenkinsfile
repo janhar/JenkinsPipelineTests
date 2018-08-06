@@ -58,6 +58,8 @@ pipeline {
                         script {
                             try {
                                 sh 'exit -1'
+                            }catch (err) {
+                                echo err
                             }
                         }
                         currentBuild.result
