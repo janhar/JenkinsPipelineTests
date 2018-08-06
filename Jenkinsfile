@@ -29,7 +29,6 @@ pipeline {
         stage("B") {
             agent {
                 label 'mac'
-                customWorkspace 'lol'
             }
             steps {
                 showDirectory()
