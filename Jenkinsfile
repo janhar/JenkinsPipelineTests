@@ -46,17 +46,22 @@ pipeline {
             parallel {
                 stage('Test On Windows') {
                     agent {
-                        label 'mac'
+                        label {
+                            label 'mac'
+                            customWorkspace 'windows'
+                        }
                     }
                     steps {
                         showDirectory()
                     }
                 }
-                
                 stage('Test On Linux') {
                     agent {
-                    label 'mac'
-                }
+                        label {
+                            label 'mac'
+                            customWorkspace 'linux'
+                        }
+                    }
                     steps {
                         showDirectory()
                     }
