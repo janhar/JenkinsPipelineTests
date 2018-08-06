@@ -16,6 +16,7 @@ pipeline {
             }*/
             steps {
                 showDirectory()
+                echo "A: ${currentBuild.currentResult}"
                 //sh './script.sh'
 		sh '''
 		  echo 'First line'
@@ -62,7 +63,7 @@ pipeline {
                                 echo err
                             }
                         }
-                        echo currentBuild.result
+                        echo "windows: ${currentBuild.currentResult}"
                     }
                 }
                 stage('Test On Linux') {
