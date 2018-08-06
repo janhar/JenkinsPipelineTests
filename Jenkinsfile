@@ -16,7 +16,7 @@ pipeline {
             }*/
             steps {
                 showDirectory()
-                sh './script.sh'
+                //sh './script.sh'
 		sh '''
 		  echo 'First line'
 		  echo 'Second line'
