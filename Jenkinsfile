@@ -48,22 +48,24 @@ pipeline {
                     agent {
                         label {
                             label 'mac'
-                            customWorkspace 'windows'
+                            //customWorkspace 'windows'
                         }
                     }
                     steps {
                         showDirectory()
+                        sh 'touch 1.txt'
                     }
                 }
                 stage('Test On Linux') {
                     agent {
                         label {
                             label 'mac'
-                            customWorkspace 'linux'
+                            //customWorkspace 'linux'
                         }
                     }
                     steps {
                         showDirectory()
+                        sh 'touch 2.txt'
                     }
                 }
             }
