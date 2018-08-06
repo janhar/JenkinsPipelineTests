@@ -55,7 +55,12 @@ pipeline {
                         showDirectory()
                         sh 'touch 1.txt'
                         stash 'touch1'
-                        sh 'exit -1'
+                        script {
+                            try {
+                                sh 'exit -1'
+                            }
+                        }
+                        currentBuild.result
                     }
                 }
                 stage('Test On Linux') {
