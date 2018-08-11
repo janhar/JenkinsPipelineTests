@@ -1,5 +1,7 @@
 def COOL
 
+def testFail=false
+
 pipeline {
     agent none
     stages {
