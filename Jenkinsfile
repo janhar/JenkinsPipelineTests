@@ -1,5 +1,7 @@
 def COOL
 
+def x=1
+
 def testFail=false
 
 pipeline {
