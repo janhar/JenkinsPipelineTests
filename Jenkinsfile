@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     if(failed) {
-                        currentBuild.currentResult='FAILURE'
+                        currentBuild.result='FAILURE'
                         echo 'B'
                     }
                 }
